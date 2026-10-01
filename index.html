@@ -140,12 +140,40 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
   .story{padding-top:70px}.story p{font-size:22px}
   .soon>img{object-position:center 30%}
 }
+
+/* ---------- Satinado vivo en los vinos ---------- */
+.silk{position:absolute !important;inset:0;overflow:hidden;pointer-events:none}
+.cover .silk{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.silk::before,.silk::after{content:"";position:absolute;inset:-25%}
+.silk::before{background:repeating-linear-gradient(118deg,rgba(255,170,200,0) 0,rgba(255,170,200,.14) 8%,rgba(30,0,10,.26) 17%,rgba(255,170,200,0) 26%);
+  animation:silkA 17s ease-in-out infinite alternate}
+.silk::after{background:repeating-linear-gradient(62deg,rgba(255,200,220,0) 0,rgba(255,200,220,.09) 11%,rgba(30,0,10,.18) 23%,rgba(255,200,220,0) 34%);
+  animation:silkB 23s ease-in-out infinite alternate}
+@keyframes silkA{from{transform:translate3d(-7%,-5%,0) rotate(-3deg)}to{transform:translate3d(7%,6%,0) rotate(3deg)}}
+@keyframes silkB{from{transform:translate3d(6%,-6%,0) rotate(2deg)}to{transform:translate3d(-7%,5%,0) rotate(-3deg)}}
+.sheen{position:absolute !important;left:50%;top:50%;width:95vmin;height:95vmin;margin:-47.5vmin 0 0 -47.5vmin;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,160,195,.34),rgba(210,70,120,.14) 42%,transparent 68%)}
+footer{position:relative;overflow:hidden}
+footer>*{position:relative}
+/* brillo que recorre botones y piezas vino */
+.shine{position:relative;overflow:hidden;background-image:linear-gradient(135deg,#99244f,#791a3d 48%,#551029)}
+.shine::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 36%,rgba(255,225,235,.30) 50%,transparent 64%);
+  transform:translateX(-130%);animation:sweep 5.2s ease-in-out infinite}
+#music-btn.shine{position:fixed}
+#music-btn.shine::after{animation-delay:1.3s}
+.ticket.shine::after{animation-delay:2.4s}
+@keyframes sweep{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+.addcal{transition:transform .2s ease,box-shadow .2s ease}
+.addcal:active{transform:scale(.96);box-shadow:0 4px 12px rgba(85,16,41,.3)}
+@media (prefers-reduced-motion:reduce){.silk::before,.silk::after,.shine::after{animation:none}}
 </style>
 </head>
 <body>
 <canvas id="motes" aria-hidden="true"></canvas>
 
 <header class="cover">
+  <span class="silk" aria-hidden="true"></span><span class="sheen" aria-hidden="true"></span>
   <p class="lbl">Save the date</p>
   <div class="arch"><div class="arch-in">
     <img src="foto1.jpg" alt="Jalin y Jesús" class="on">
@@ -182,7 +210,7 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
     <p class="lbl rv">Aparta la fecha</p>
     <h2 class="rv">Márcalo en tu calendario</h2>
     <div class="cal rv">
-      <div class="cal-top">Abril<small>2027</small></div>
+      <div class="cal-top shine">Abril<small>2027</small></div>
       <div class="grid">
         <span class="h">L</span><span class="h">M</span><span class="h">M</span><span class="h">J</span><span class="h">V</span><span class="h">S</span><span class="h">D</span>
         <span></span><span></span><span></span><span>1</span><span>2</span><span class="day">3</span><span>4</span>
@@ -193,7 +221,7 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
       </div>
     </div>
     <p class="cal-city rv"><b>Sábado 3 de abril de 2027</b>Yecuatla, Veracruz</p>
-    <div class="ticket rv">
+    <div class="ticket shine rv">
       <p class="lbl">Faltan</p>
       <div class="cd">
         <div><b id="cd-d">—</b><span>Días</span></div>
@@ -202,7 +230,7 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
         <div><b id="cd-s">—</b><span>Seg</span></div>
       </div>
     </div>
-    <a class="addcal rv" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Jalin+%26+Jes%C3%BAs&dates=20270403/20270404&location=Yecuatla,+Veracruz">Agregar a mi calendario</a>
+    <a class="addcal shine rv" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Jalin+%26+Jes%C3%BAs&dates=20270403/20270404&location=Yecuatla,+Veracruz">Agregar a mi calendario</a>
   </section>
 
   <section class="soon">
@@ -216,6 +244,7 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
 </main>
 
 <footer>
+  <span class="silk" aria-hidden="true"></span><span class="sheen" aria-hidden="true"></span>
   <p class="mono">J <span>&amp;</span> J</p>
   <p class="when">03 · 04 · 2027</p>
   <p class="credit">Invitación digital por <a href="https://www.instagram.com/elysium.invitaciones" target="_blank" rel="noopener">@elysium.invitaciones</a></p>
@@ -224,7 +253,7 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
 <audio id="music" preload="none" loop playsinline>
   <source src="https://boda-isaac-y-claudia.vercel.app/cancion.mp3" type="audio/mpeg">
 </audio>
-<button id="music-btn" type="button" aria-label="Reproducir música"><i></i><i></i><i></i><i></i></button>
+<button id="music-btn" class="shine" type="button" aria-label="Reproducir música"><i></i><i></i><i></i><i></i></button>
 
 <script>
 /* Portada: fotos que se relevan dentro del arco */
@@ -270,6 +299,29 @@ footer .when{font-family:var(--didone);font-weight:600;letter-spacing:.2em;font-
     requestAnimationFrame(draw);
   }
   size();addEventListener('resize',size);draw();
+})();
+/* Satinado: el brillo sigue el dedo / cursor / inclinacion y nunca se queda quieto */
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var sh=[].slice.call(document.querySelectorAll('.sheen')),px=0,py=0,cx=0,cy=0;
+  function pt(x,y){ px=x/innerWidth*2-1; py=y/innerHeight*2-1; }
+  addEventListener('pointermove',function(e){ pt(e.clientX,e.clientY); },{passive:true});
+  addEventListener('touchmove',function(e){ var t=e.touches[0]; if(t) pt(t.clientX,t.clientY); },{passive:true});
+  addEventListener('deviceorientation',function(e){
+    if(e.gamma==null) return;
+    px=Math.max(-1,Math.min(1,e.gamma/30)); py=Math.max(-1,Math.min(1,(e.beta-45)/30));
+  },{passive:true});
+  function f(t){
+    cx+=(px-cx)*.05; cy+=(py-cy)*.05;
+    var dx=Math.sin(t/3100)*.5+Math.sin(t/1900)*.2, dy=Math.cos(t/4300)*.5;
+    for(var i=0;i<sh.length;i++){
+      var r=sh[i].parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight) continue;
+      sh[i].style.transform='translate3d('+((dx*.3+cx*.42)*r.width).toFixed(1)+'px,'+((dy*.28+cy*.4)*r.height).toFixed(1)+'px,0)';
+    }
+    requestAnimationFrame(f);
+  }
+  requestAnimationFrame(f);
 })();
 /* Música */
 (function(){
