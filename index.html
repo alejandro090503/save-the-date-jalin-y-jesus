@@ -18,12 +18,12 @@
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500;1,6..96,600&family=Caveat:wght@600;700&family=EB+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500;1,6..96,600&family=Pinyon+Script&family=EB+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
   --wine:#791a3d;--wine-dk:#551029;--rose:#99244f;--sand:#D4C5B2;
   --cream:#f7f1e8;--paper:#fffaf2;--ink:#2a1219;
-  --didone:'Bodoni Moda',Didot,serif;--text:'EB Garamond',Garamond,serif;--hand:'Caveat',cursive;
+  --didone:'Bodoni Moda',Didot,serif;--text:'EB Garamond',Garamond,serif;--hand:'Pinyon Script',cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -167,13 +167,50 @@ footer>*{position:relative}
 .addcal{transition:transform .2s ease,box-shadow .2s ease}
 .addcal:active{transform:scale(.96);box-shadow:0 4px 12px rgba(85,16,41,.3)}
 @media (prefers-reduced-motion:reduce){.silk::before,.silk::after,.shine::after{animation:none}}
+
+/* ---------- Ronda 2: portada limpia + historia clásica ---------- */
+.cover{background:var(--cream);color:var(--wine-dk)}
+.cover::before{display:none}
+.cover .lbl,.cover-place{color:var(--wine)}
+.arch{border-color:rgba(121,26,61,.45)}
+.arch-in::after{display:none}
+.names{margin-top:22px;text-shadow:none;color:var(--wine)}
+.names span{font-weight:400;font-size:.8em;color:var(--rose)}
+.cover-date i{background:var(--rose)}
+.down b{background:linear-gradient(var(--wine),transparent)}
+.story{padding-top:64px}
+.yrs{position:relative;display:inline-block;line-height:1}
+.n13{font-family:var(--didone);font-weight:600;font-size:clamp(130px,40vw,210px);line-height:.9;color:var(--wine);letter-spacing:-.01em;display:block}
+.anos{font-family:var(--hand);font-size:clamp(62px,18vw,96px);color:#a98352;display:block;margin-top:-.42em;line-height:1}
+.story p.caps{font-family:var(--text);font-weight:600;font-size:17px;letter-spacing:.09em;text-transform:uppercase;color:var(--wine-dk);line-height:1.7;margin-top:22px}
+.story p.caps.sm{font-size:16px}
+.story p.caps br{display:none}
+@media(min-width:520px){.story p.caps br{display:inline}}
+.rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px auto 0;max-width:230px}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:rgba(121,26,61,.4)}
+.rule i{width:7px;height:7px;background:#a98352;transform:rotate(45deg)}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:34px auto 34px;max-width:460px}
+.collage figure{background:#fff;padding:7px;box-shadow:0 12px 30px rgba(85,16,41,.18)}
+.collage img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.collage .c1{transform:rotate(-1.6deg)}
+.collage .c2{transform:rotate(1.4deg) translateY(10px)}
+.collage .c3{grid-column:1/-1;transform:rotate(-.6deg);margin-top:8px}
+.collage .c3 img{aspect-ratio:4/3;object-position:center 30%}
+.yes{font-family:var(--hand);font-style:normal;font-weight:400;font-size:clamp(36px,10.6vw,70px);white-space:nowrap;line-height:1.1;margin-top:18px;color:var(--wine)}
+.ring{margin:14px -24px 0}
+.ring img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 55%;
+  -webkit-mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent)}
+.sign{margin-top:54px}
+.sign .who{font-family:var(--hand);font-weight:400;font-size:clamp(50px,14vw,68px);color:var(--wine);line-height:1.15;margin-top:22px}
+.sign .when{font-family:var(--didone);font-weight:600;font-size:20px;letter-spacing:.22em;color:var(--wine-dk);margin-top:4px}
+.sign .fin{font-family:var(--didone);font-style:italic;font-weight:500;font-size:clamp(24px,6.6vw,30px);line-height:1.35;color:var(--wine-dk);margin-top:24px}
+.mono span{font-size:.8em}
+@media(min-width:800px){.ring{margin-left:0;margin-right:0}}
 </style>
 </head>
 <body>
-<canvas id="motes" aria-hidden="true"></canvas>
 
 <header class="cover">
-  <span class="silk" aria-hidden="true"></span><span class="sheen" aria-hidden="true"></span>
   <p class="lbl">Save the date</p>
   <div class="arch"><div class="arch-in">
     <img src="foto1.jpg" alt="Jalin y Jesús" class="on">
@@ -185,24 +222,28 @@ footer>*{position:relative}
   <p class="lbl cover-place">Yecuatla, Veracruz</p>
   <div class="down" aria-hidden="true"><b></b></div>
 </header>
-<span class="wave" aria-hidden="true"></span>
 
 <main>
   <section class="story">
-    <div class="big13 rv" aria-hidden="true">13</div>
-    <p class="lbl rv">años de historias</p>
-    <p class="rv">13 años de historias, aprendizajes, dos hijas que son nuestro mayor regalo y una vida que hemos construido juntos.</p>
-    <p class="soft rv">Hoy queremos compartirles algo que nos hace muy felices...</p>
-    <h2 class="yes rv">¡Nos comprometimos!</h2>
-    <div class="polas rv">
-      <figure class="pola a"><img src="foto2.jpg" alt="Jalin y Jesús abrazados al atardecer"><figcaption>elegirnos…</figcaption></figure>
-      <figure class="pola b"><img src="foto3.jpg" alt="Jalin y Jesús sonriendo"><figcaption>…una vez más</figcaption></figure>
+    <div class="yrs rv"><span class="n13">13</span><span class="anos">años</span></div>
+    <p class="caps rv">de historias, aprendizajes <br>y una vida construida juntos.</p>
+    <div class="rule rv" aria-hidden="true"><i></i></div>
+    <div class="collage rv">
+      <figure class="c1"><img src="foto2.jpg" alt="Jalin y Jesús sonriendo"></figure>
+      <figure class="c2"><img src="foto5.jpg" alt="Jalin y Jesús frente a la laguna al atardecer"></figure>
+      <figure class="c3"><img src="familia.jpg" alt="Jalin y Jesús con sus dos hijas"></figure>
     </div>
-    <p class="rv" style="margin-top:70px">Después de todo lo que hemos vivido, decidimos elegirnos una vez más y comenzar una nueva etapa de nuestra historia.</p>
+    <p class="caps rv">Dos hijas que son <br>nuestro mayor regalo.</p>
+    <div class="rule rv" aria-hidden="true"><i></i></div>
+    <p class="caps sm rv">Y hoy queremos compartirles <br>algo que nos hace muy felices…</p>
+    <h2 class="yes rv">¡Nos comprometimos!</h2>
+    <figure class="ring rv"><img src="anillo.jpg" alt="El anillo de compromiso"></figure>
+    <p class="rv">Después de todo lo que hemos vivido, decidimos elegirnos una vez más y comenzar una nueva etapa de nuestra historia.</p>
     <div class="sign rv">
+      <div class="rule" aria-hidden="true"><i></i></div>
       <p class="who">Jalin &amp; Jesús</p>
-      <p class="when">03-04-2027</p>
-      <p class="hand">Ahora sí...<br>¡nos vamos a casar!</p>
+      <p class="when">03 · 04 · 2027</p>
+      <p class="fin">Ahora sí…<br>¡nos vamos a casar!</p>
     </div>
   </section>
 
@@ -282,23 +323,6 @@ footer>*{position:relative}
     document.getElementById('cd-s').textContent=p(s%60);
   }
   t(); setInterval(t,1000);
-})();
-/* Motas doradas de atardecer */
-(function(){
-  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var cv=document.getElementById('motes'),c=cv.getContext('2d'),W,H,d=Math.min(devicePixelRatio||1,2),ps=[];
-  function R(a,b){return a+Math.random()*(b-a)}
-  function size(){W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cv.style.width=W+'px';cv.style.height=H+'px';c.setTransform(d,0,0,d,0,0);
-    ps=[];for(var i=0;i<Math.min(34,Math.max(18,W/22));i++)ps.push({x:R(0,W),y:R(0,H),r:R(1,2.6),v:R(.08,.3),ph:R(0,6.3),tw:R(.01,.03)});}
-  function draw(){
-    c.clearRect(0,0,W,H);
-    for(var i=0;i<ps.length;i++){var p=ps[i];p.y-=p.v;p.ph+=p.tw;if(p.y<-8){p.y=H+8;p.x=R(0,W);}
-      var x=p.x+Math.sin(p.ph)*14,a=.25+.35*(.5+.5*Math.sin(p.ph*2.3));
-      var g=c.createRadialGradient(x,p.y,0,x,p.y,p.r*3);g.addColorStop(0,'rgba(236,190,120,'+a+')');g.addColorStop(1,'rgba(236,190,120,0)');
-      c.fillStyle=g;c.beginPath();c.arc(x,p.y,p.r*3,0,6.3);c.fill();}
-    requestAnimationFrame(draw);
-  }
-  size();addEventListener('resize',size);draw();
 })();
 /* Satinado: el brillo sigue el dedo / cursor / inclinacion y nunca se queda quieto */
 (function(){
